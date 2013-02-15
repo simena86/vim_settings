@@ -1,0 +1,31 @@
+set nocp
+filetype plugin on
+set autoindent
+set cindent
+
+
+
+
+"vim pathogen
+"""""""""""""""""""""""""""""""""""""""""""""""""
+execute pathogen#infect()
+
+
+
+" pair of braces
+inoremap {      {}<Left>
+inoremap {<CR>  {<CR>}<Esc>O
+inoremap {{     {
+inoremap {}     {}
+
+
+" ctags
+set tags=/usr/include/tags
+set tags+=/usr/local/tags
+set tags+=./tags
+
+" C-\ - Open the definition in a new tab
+"A-] - Open the definition in a vertical split
+map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+
